@@ -16,7 +16,14 @@ export default defineConfig({
       { text: "Home", link: "/" },
       // { text: 'Examples', link: '/markdown-examples' }
     ],
-
+    search: {
+      provider: "local",
+    },
+    logo: "/logo.svg",
+    editLink: {
+      pattern: "https://github.com/markopolo-inc/marktag-docs/edit/main/:path",
+      text: "Edit this page on GitHub",
+    },
     sidebar: [
       {
         text: "Introduction",
@@ -43,7 +50,9 @@ export default defineConfig({
         ],
       },
     ],
-
+    footer: {
+      copyright: "Copyright © 2019-present Markopolo AI",
+    },
     socialLinks: [
       { icon: "github", link: "https://github.com/markopolo-inc/marktag-docs" },
     ],

@@ -6,6 +6,9 @@ hero:
   name: "MarkTag SDK Docs"
   # text: "The documentation site for marktag mobile sdk "
   tagline: The documentation site for MarkTag sdk
+  image:
+    src: /logo.svg
+    alt: MarkTag
   actions:
     - theme: brand
       text: Get Started
