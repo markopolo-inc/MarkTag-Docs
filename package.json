@@ -1,5 +1,4 @@
 {
-  "dependencies": {},
   "devDependencies": {
     "vitepress": "^1.0.0-rc.40"
   },
@@ -15,5 +14,8 @@
     "vite": {
       "rollup": "npm:@rollup/wasm-node"
     }
+  },
+  "optionalDependencies": {
+    "@rollup/rollup-linux-x64-gnu": "^4.10.0"
   }
 }
