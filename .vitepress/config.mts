@@ -3,6 +3,7 @@ import { defineConfig } from "vitepress";
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
   title: "Docs | Marktag SDK",
+  base: "/marktag-docs/",
   description: "The documentation site for marktag sdk ",
   themeConfig: {
     // https://vitepress.dev/reference/default-theme-config
