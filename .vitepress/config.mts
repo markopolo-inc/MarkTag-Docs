@@ -3,8 +3,13 @@ import { defineConfig } from "vitepress";
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
   title: "Docs | Marktag SDK",
-  base: "/marktag-docs/",
   description: "The documentation site for marktag sdk ",
+  base: "/marktag-docs/",
+  lastUpdated: true,
+  cleanUrls: true,
+  sitemap: {
+    hostname: "https://markopolo-inc.github.io/marktag-docs",
+  },
   themeConfig: {
     // https://vitepress.dev/reference/default-theme-config
     nav: [
@@ -40,7 +45,7 @@ export default defineConfig({
     ],
 
     socialLinks: [
-      { icon: "github", link: "https://github.com/vuejs/vitepress" },
+      { icon: "github", link: "https://github.com/markopolo-inc/marktag-docs" },
     ],
   },
 });
