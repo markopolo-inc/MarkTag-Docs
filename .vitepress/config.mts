@@ -38,6 +38,8 @@ export default defineConfig({
           { text: "Identify user", link: "/log-events/identify-user" },
           { text: "Automatic logging", link: "/log-events/automatic-logging" },
           { text: "Manual logging", link: "/log-events/manual-logging" },
+          {text:"Web SDK", link: "/log-events/web-sdk" },
+          {text:"REST API", link: "/log-events/api.md" },
         ],
       },
       {

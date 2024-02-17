@@ -13,9 +13,9 @@ hero:
     - theme: brand
       text: Get Started
       link: /introduction/introduction
-    # - theme: alt
-    #   text: API Examples
-    #   link: /api-examples
+    
+
+   
 
 features:
   - title: Accurate Event Tracking
