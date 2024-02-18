@@ -2,10 +2,19 @@
 
 This quickstart shows you how to add MarkTag WEB SDK to your web app and begin logging events.
 
+## Prequisites
+
+You must setup mark tag container to send event data to your tag container.
+https://app.markopolo.ai/marktag/pixel
+
+
+## Guide
+
+Once you've successfully created your MarkTag container, proceed to these steps to send events to your tag container.
+
 ## Add the MarkTag to your web application
 
 1. Install and init MarkTag Script to your web application
-
 
 ```js
   <script>
@@ -16,14 +25,10 @@ This quickstart shows you how to add MarkTag WEB SDK to your web app and begin l
 
   </script>
 
-  <script async type="text/javascript" src="tag.your-domain.com/script" /> 
+  <script async type="text/javascript" src="tag.your-domain.com/script" />
 ```
 
-
-
-
 Done! You are now able to log events with MarTag
-
 
 # Manual Logging with MarkTag API
 
@@ -59,11 +64,11 @@ Build `payload` object depending on the event type
 
 ---
 
-
 ::: details **View Content**
+
 ##### Add this event code to each page of your site to track when a customer visits it. MarkTag automatically collects the page URL and page information
 
-**
+\*\*
 
 #### Schema
 
@@ -92,13 +97,15 @@ payload: {
 | phone |   string    |    false | -->
 
 ---
+
 :::
 
 <!-- ### View Item -->
 
-
 ::: details View Item
+
 #### Add this event code to an item on your site to track when a customer clicks it to view details or add it to the item’s detail page. MarkTag automatically collects the page URL and page information.
+
 <!--
 | Payload      |      Type      |  Required | Description |
 | ------------- | :-----------: | ----: |             ----: |
@@ -119,8 +126,7 @@ payload: {
 | - `coupon`    | string        | false (within `products`) |
 | - `discount`  | number        | false (within `products`) | -->
 
-
-**
+\*\*
 
 #### Schema
 
@@ -217,9 +223,10 @@ payload: {
 <!-- ### Login Form -->
 
 ::: details Login
+
 #### Add this event to track a customer login.
 
-**
+\*\*
 
 #### Schema
 
@@ -233,7 +240,6 @@ payload: {
 
 #### Example
 
-
 ```js
 payload: {
           type: 'Login',
@@ -244,17 +250,15 @@ payload: {
 
 :::
 
-
-
 ::: details Signup
+
 #### Add this event to track a new customer signup
 
-**
+\*\*
+
 <!-- ### Signup  -->
 
 #### Schema
-
-
 
 ```js
 payload: {
@@ -277,12 +281,12 @@ payload: {
 :::
 
 ::: details Complete Registration
- #### Add this event to track when a customer completes registration.
 
- **
+#### Add this event to track when a customer completes registration.
+
+\*\*
 
 <!-- ### Complete Registration -->
-
 
 #### Schema
 
@@ -307,11 +311,12 @@ paload: {
 
 :::
 
-
 :::details Start Trial
+
 #### Add this event to track when a customer starts a trial
 
-**
+\*\*
+
 <!-- ### Start Trial -->
 
 #### Schema
@@ -404,13 +409,11 @@ payload:{
 
 <!-- ### Add Payment Info -->
 
-
-
 ::: details Add Payment Info
 
 #### Add this event to track when a customer adds payment info.
 
-**
+\*\*
 
 #### Schema
 
@@ -427,7 +430,6 @@ payload: {
 ```
 
 #### Product Object
-
 
 ```js
 {
@@ -502,12 +504,11 @@ payload:{
 
 :::
 
-
 ::: details Add Shipping Info
 
 #### Add this event to track when a customer adds shipping info
 
-**
+\*\*
 
 #### Schema
 
@@ -604,7 +605,7 @@ payload: {
 
 #### Add this event code to an item on your site to track when a customer views their cart.
 
-**
+\*\*
 
 #### Schema
 
@@ -694,9 +695,10 @@ payload: {
 <!-- ### Add To Cart -->
 
 ::: details Add To cart
+
 #### Add this event code to an item on your site to track when a customer adds it to their cart.
 
-**
+\*\*
 
 #### Schema
 
@@ -787,13 +789,11 @@ payload: {
 
 <!-- ### Add To Wishlist -->
 
-
-
 ::: details Add To Wishlist
 
 #### Add this event code to an item on your site to track when a customer adds it to their wishlist.
 
-**
+\*\*
 
 #### Schema
 
@@ -852,7 +852,7 @@ payload: {
 
 #### Add this event code to items in the cart on your site to track when a customer removes them from their cart.
 
-**
+\*\*
 
 #### Schema
 
@@ -943,12 +943,11 @@ payload:{
 
 <!-- ### Begin Checkout -->
 
-
 ::: details Begin Checkout
 
 #### Add this event to your site to track when a customer begins to checkout.
 
-**
+\*\*
 
 #### Schema
 
@@ -1039,12 +1038,11 @@ payload: {
 
 :::
 
-
 ::: details Purchase
 
 #### Add this event to track when a customer makes a purchase.
 
-**
+\*\*
 
 <!-- ### Purchase -->
 
@@ -1146,7 +1144,7 @@ payload: {
 
 #### Add this event to track when a customer makes a refund.
 
-**
+\*\*
 
 #### Schema
 
@@ -1237,12 +1235,12 @@ payload: {
 
 :::
 
-
 ::: details Search
 
 #### Add this event to the search bar of your site to track when an user searches for term or product.
 
-**
+\*\*
+
 <!-- ### Search -->
 
 #### Schema
@@ -1270,13 +1268,12 @@ payload: {
 
 :::
 
-
-
 ::: details Share
 
 #### Add this event to share buttons on your site to track when an user share something from your site.
 
-**
+\*\*
+
 <!-- ### Share -->
 
 ### Schema
@@ -1306,13 +1303,11 @@ payload: {
 
 <!-- ### Subscribe -->
 
-
-
 ::: details Subscribe
 
 #### Add this event to track when a customer subscribes to a plan.
 
-**
+\*\*
 
 #### Schema
 
@@ -1390,14 +1385,13 @@ payload: {
 
 <!-- ### Lead -->
 
-
 ::: details Lead
 
 #### Schema
 
 #### Add this event to your lead form’s CTA button to track information when an user submits a lead form.
 
-**
+\*\*
 
 ```js
 paylaod: {
@@ -1425,12 +1419,11 @@ payload:  {
 
 <!-- ### Submit Application -->
 
-
 ::: details Submit Application
 
 #### Add this event to your application form’s CTA button to track information when an user submits an application form.
 
-**
+\*\*
 
 #### Schema
 
@@ -1457,13 +1450,11 @@ payload:  {
 
 <!-- ### Contact -->
 
-
-
 ::: details Contact
 
 #### Add this event to a contact form to track when a customer wants to contact your business.
 
-**
+\*\*
 
 #### Schema
 
@@ -1487,13 +1478,12 @@ payload:{
 
 :::
 
-
 ::: details Donate
-
 
 #### Add this event to track when someone donates to your organization.
 
-** 
+\*\*
+
 <!-- ### Donate -->
 
 #### Schema
@@ -1520,13 +1510,11 @@ payload: {
 
 <!-- ### Schedule -->
 
-
-
 ::: details Schedule
 
 #### Add this event to track when someone schedules a call or meeting with your business.
 
-**
+\*\*
 
 ```js
 payload: {
@@ -1552,18 +1540,16 @@ payload:  {
 
 #### It has no fixed payload schema and it can be build using any custom parameters
 
-
 ```js
 
   payload:{
-    name: "share_image",
-    metadata: {
-        "image_name": name,
-        "full_text": text,
-    },
+    type: "share_image",
+    "image_name": name,
+    "full_text": text,
   }
 
 ```
+
 # Automatic Logging with MarkTag
 
 Analytics automatically logs some events for you as soon as you install marktag snippet on your web app pages, you don't need to add any code to receive them. These information are:
@@ -1576,6 +1562,6 @@ Analytics automatically logs some events for you as soon as you install markta
 | Currency               |                                BDT                                 |
 | Time Zone              |                               GMT+6                                |
 | Operating System       |                           Android / iOS                            |
-| Device                 |                           Pixel 7 / iPad7                           |
+| Device                 |                          Pixel 7 / iPad7                           |
 | Application Version    | Currently installed version the app on the user's phone eg. v1.0.0 |
 | Web Browser User Agent |                            Mozilla/5.0                             |
