@@ -19,7 +19,7 @@ export default defineConfig({
     search: {
       provider: "local",
     },
-    logo: "/logo.svg",
+    logo: "../logo.svg",
     editLink: {
       pattern: "https://github.com/markopolo-inc/marktag-docs/edit/main/:path",
       text: "Edit this page on GitHub",
