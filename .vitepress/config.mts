@@ -33,15 +33,39 @@ export default defineConfig({
         ],
       },
       {
-        text: "SDK And Rest API",
+        text: "React Native",
         items: [
-          // { text: "Identify user", link: "/log-events/identify-user" },
-          // { text: "Automatic logging", link: "/log-events/automatic-logging" },
-          // { text: "Manual logging", link: "/log-events/manual-logging" },
-          {text:"Web SDK", link: "/log-events/web-sdk.md" },
-          {text:"REST API", link: "/log-events/api.md" },
+          { text: "Installation", link: "/react-native/installation" },
+          { text: "Identify User", link: "/react-native/identify-user" },
+          { text: "Usage", link: "/react-native/usage" },
         ],
       },
+      {
+        text: "Web SDK",
+        items: [
+          { text: "Installation", link: "/web-sdk/installation" },
+          { text: "Usage", link: "/web-sdk/usage" },
+        ],
+      },
+      {
+        text: "REST API",
+        items: [
+          { text: "Prerequisites", link: "/rest-api/prerequisites" },
+          { text: "Example", link: "/rest-api/example" },
+          { text: "Usage", link: "/rest-api/usage" },
+        ],
+      },
+      // {
+      //   text: "SDKs",
+      //   items: [
+      //     // { text: "Identify user", link: "/log-events/identify-user" },
+      //     // { text: "Automatic logging", link: "/log-events/automatic-logging" },
+      //     // { text: "Manual logging", link: "/log-events/manual-logging" },
+      //     { text: "Web SDK", link: "/sdk/web-sdk.md" },
+      //     { text: "React Native", link: "/sdk/react-native.md" },
+      //     { text: "REST API", link: "/sdk/rest-api.md" },
+      //   ],
+      // },
       // {
       //   text: "Compliance",
       //   items: [

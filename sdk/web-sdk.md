@@ -2,11 +2,10 @@
 
 This quickstart shows you how to add MarkTag WEB SDK to your web app and begin logging events.
 
-## Prequisites
+## Prerequisites
 
 You must setup mark tag container to send event data to your tag container.
 https://app.markopolo.ai/marktag/pixel
-
 
 ## Guide
 
