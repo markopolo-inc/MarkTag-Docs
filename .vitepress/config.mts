@@ -29,7 +29,7 @@ export default defineConfig({
         text: "Introduction",
         items: [
           { text: "What is MarkTag?", link: "/introduction/introduction" },
-          { text: "Getting started", link: "/introduction/getting-started" },
+          // { text: "Getting started", link: "/introduction/getting-started" },
         ],
       },
       {
