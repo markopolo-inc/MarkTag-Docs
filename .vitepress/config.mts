@@ -19,7 +19,11 @@ export default defineConfig({
     search: {
       provider: "local",
     },
-    logo: "../logo.svg",
+    logo: {
+      src: "/logo.svg",
+      width: 24,
+      height: 24,
+    },
     editLink: {
       pattern: "https://github.com/markopolo-inc/marktag-docs/edit/main/:path",
       text: "Edit this page on GitHub",
@@ -29,7 +33,7 @@ export default defineConfig({
         text: "Introduction",
         items: [
           { text: "What is MarkTag?", link: "/introduction/introduction" },
-          // { text: "Getting started", link: "/introduction/getting-started" },
+          { text: "Getting started", link: "/introduction/getting-started" },
         ],
       },
       {
