@@ -1,132 +1,34 @@
-# Get started with MarkTag REST API
+# Log Events
 
-This quickstart shows you how to use MarkTag REST API to send event.
+Once you have installed MarkTag on your web app, you can start logging events
 
-## Prequisites
-
-You must setup mark tag container to send event data to your tag container.
-https://app.markopolo.ai/marktag/pixel
-
-## Guide
-
-Once you've successfully created your MarkTag container, proceed to these steps to send events to your tag container.
-
-### Endpoint
-
-```
-POST /mark
-```
-
-### Request Headers
-
-```
-- Host: https://tag.your-domain.com
-- User-Agent: userAgent
-- Content-event: application/json
-- Cookie: _fbp=fbpValue; _fbc=fbcValue; _ttp: ttpValue
-
-
-```
-
-## Cookies Used on This Website
-
-This table provides information about the cookies used on this website.
-
-| Cookie Name         | Description                                                                                                    | Required |
-|---------------------|----------------------------------------------------------------------------------------------------------------- | -------- |
-| `_fbp`              | When the Meta Pixel is installed on a website, and the Pixel uses first-party cookies, the Pixel automatically saves a unique identifier to an _fbp cookie for the website domain if one does not already exist. See [here](https://developers.facebook.com/docs/marketing-api/conversions-api/parameters/fbp-and-fbc/) for more information. | No       |
-| `_fbc`              | When a user clicks on an ad on Facebook, the link sometimes includes a fbclid query parameter. When the user lands on the target website, if the website has a Meta Pixel that uses first-party cookies, the Pixel automatically saves the fbclid query parameter to an _fbc cookie for that website domain. See [here](https://developers.facebook.com/docs/marketing-api/conversions-api/parameters/fbp-and-fbc/) for more information. | No       |
-| `_ttp_`             | To measure and improve the performance of your advertising campaigns and to personalize the user's experience (including ads) on TikTok. See [here](https://ads.tiktok.com/help/article/using-cookies-with-tiktok-pixel?lang=en) for more information. | No       |
-
-
-### Request Body
+## Log Event
 
 ```js
-
-{
-    "x-cf-ip": IP,  //user ip address
-    "x-cf-loc": Location, //user country code
-    "pageUrl": PageURL, // page URL from where event triggered
-    "event": Event, // event event
-    "muid": MUID, //unique identifier of each user
-    "mt_ref_src":"", //optional
-    //add other body depending on event type
-}
+mtag("event", payload);
 ```
-
 
 ::: info
-Additional body data needs to be sent depending on the event type
+Build `payload` object depending on the event type
 :::
 
-## Event Data Fields
+## Example
 
-This table summarizes the fields included in the event data payload:
+### View Content Event logging
 
-| Field Name                             | Description                                  | Required |
-| -------------------------------------- | -------------------------------------------- | -------- |
-| `x-cf-ip`                              | User IP address                              | Yes      |
-| `x-cf-loc`                             | User location (country code)                 | Yes      |
-| `pageUrl`                              | Page URL where the event was triggered       | Yes      |
-| `event`                                | Specific event that occurred                 | Yes      |
-| `muid`                                 | Unique identifier for each user              | Yes      |
-| `mt_ref_src`                           | Optional referrer source                     | No       |
-| **Additional Fields (Event Specific)** | Additional fields specific to the event type | Varies   |
-
-**Note:** The "Additional Fields" section will vary depending on the specific event type. Please refer to the documentation for your specific event types to determine the additional fields required or available mentioned below.
-
-### Curl Example
-
-This is a sample of sending event data to the tag server
-
-```curl
-
-curl --location 'https://tag.your-domain.com' \
---header 'User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/115.0.0.0 Safari/537.36' \
---header 'Content-event: application/json' \
---header 'Cookie: _muid=value; \
---data-raw '{
-    "x-cf-ip": "101.2.167.255",
-    "x-cf-loc": "BD",
-    "pageUrl": "https://test-wp.markopoloai.com/checkout/",
-    "event": "Purchase",
-    "email": "john@example.com",
-    "muid": "ce2825f6-931d-4011-91bc-70dc7b535e10",
-    "shipping_cost": "25",
-    "tax": 0,
-    "value": 113,
-    "currency": "USD",
-    "mt_ref_src":"",
-    "products": [
-        {
-            "id": 96,
-            "name": "Mark-test-prod",
-            "variant": "",
-            "quantity": 4,
-            "price": 12
-        },
-        {
-            "id": 36,
-            "name": "new",
-            "variant": "",
-            "quantity": 2,
-            "price": 20
-        }
-    ]
-}'
+```js
+    mtag('event', {
+        type: 'ViewContent',
+        email: 'johndoe@example.com'
+        phone: '+13425784032'
+    })
 ```
 
----
-
-
-
-## Standard Events
+## Predefined Events and it's Payload
 
 ---
 
 ::: details **View Content**
-
----
 
 ##### Add this event code to each page of your site to track when a customer visits it. MarkTag automatically collects the page URL and page information
 
@@ -135,26 +37,26 @@ curl --location 'https://tag.your-domain.com' \
 #### Schema
 
 ```js
-{
-  event: "ViewContent",
-  email: `<STRING: USER EMAIL>`; // Optional
-  phone: `<STRING: USER PHONE NUMBER>`; // Optional
-}
+    payload: {
+        type: 'ViewContent',
+        email: `<STRING: USER EMAIL>` // Optional
+        phone: `<STRING: USER PHONE NUMBER>` // Optional
+    }
 ```
 
 #### Example
 
 ```js
- {
-        event:"ViewContent",
+payload: {
+        type: 'ViewContent',
         email: 'john@example.com',
         phone: '+13425784032',
     }
 ```
 
-<!-- | Payload      |      event      |  Required |
+<!-- | Payload      |      Type      |  Required |
 | ------------- | :-----------: | ----: |
-| event     | string| true |
+| type     | string| true |
 | email      |   string    | false |
 | phone |   string    |    false | -->
 
@@ -166,19 +68,17 @@ curl --location 'https://tag.your-domain.com' \
 
 ::: details View Item
 
----
-
 #### Add this event code to an item on your site to track when a customer clicks it to view details or add it to the item’s detail page. MarkTag automatically collects the page URL and page information.
 
 <!--
-| Payload      |      event      |  Required | Description |
+| Payload      |      Type      |  Required | Description |
 | ------------- | :-----------: | ----: |             ----: |
-| `event`        | string        | true     | Event event |
+| `type`        | string        | true     | Event type |
 | `email`       | string        | false    | User Email Address |
 | `phone`       | string        | false    | User Phone Number |
 | `value`       | number       | false     |  Value of this item  |
 | `currency`    | string        | false     | Currency |
-| `content_event` | enum('product' , 'image' , 'video' , 'blog') or any custom string | false |
+| `content_type` | enum('product' , 'image' , 'video' , 'blog') or any custom string | false |
 | `products`    | array of objects        | false     |
 | - `id`        | string        | true (within `products`) |  Unique id of product |
 | - `name`       | string        | false (within `products`) | Product Name eg. "Shirt" |
@@ -195,14 +95,14 @@ curl --location 'https://tag.your-domain.com' \
 #### Schema
 
 ```js
- {
-        event: 'ViewItem',
+paylaod: {
+        type: 'ViewItem',
        email: <STRING: USER EMAIL>   , // Optional
        phone:<STRING: USER PHONE NUMBER>, // Optional
         value: <NUMBER: VALUE OF THIS ITEM >, // Optional
         currency: <STRING: CURRENCY OF THE VALUE>, // Optional
         products: <Array of Product object>, // Optional
-        content_event: <'product' | 'image' | 'video' | 'blog' | string> // Optional
+        content_type: <'product' | 'image' | 'video' | 'blog' | string> // Optional
     }
 ```
 
@@ -248,13 +148,13 @@ curl --location 'https://tag.your-domain.com' \
 
 
 
- {
-        event: 'ViewItem',
+payload: {
+        type: 'ViewItem',
         email: 'john@example.com',
         phone: '+13425784032',
         value: 40.0,
         currency: 'USD',
-        content_event: 'product',
+        content_type: 'product',
         products: [
           {
             id: 'SKU-345',
@@ -295,8 +195,8 @@ curl --location 'https://tag.your-domain.com' \
 #### Schema
 
 ```js
- {
-        event: 'Login',
+payload: {
+        type: 'Login',
        email: <STRING: USER EMAIL>   , // Optional
        phone:<STRING: USER PHONE NUMBER>, // Optional
     }
@@ -305,8 +205,8 @@ curl --location 'https://tag.your-domain.com' \
 #### Example
 
 ```js
- {
-          event: 'Login',
+payload: {
+          type: 'Login',
           email: 'john@example.com',
           phone: '+13425784032',
     }
@@ -325,8 +225,8 @@ curl --location 'https://tag.your-domain.com' \
 #### Schema
 
 ```js
- {
-        event: 'Signup',
+payload: {
+        type: 'Signup',
        email: <STRING: USER EMAIL>   , // Optional
        phone:<STRING: USER PHONE NUMBER>, // Optional
     }
@@ -335,8 +235,8 @@ curl --location 'https://tag.your-domain.com' \
 #### Example
 
 ```js
- {
-          event: 'Signup',
+payload: {
+          type: 'Signup',
           email: 'john@example.com',
           phone: '+13425784032',
     }
@@ -355,8 +255,8 @@ curl --location 'https://tag.your-domain.com' \
 #### Schema
 
 ```js
- {
-        event: 'CompleteRegistration',
+payload: {
+        type: 'CompleteRegistration',
         email: '<USER EMAIL>', // Optional
         phone: '<USER PHONE NUMBER>', // Optional
         // You can add additional key-value pairs
@@ -367,7 +267,7 @@ curl --location 'https://tag.your-domain.com' \
 
 ```js
 paload: {
-          event: 'CompleteRegistration',
+          type: 'CompleteRegistration',
           email: 'john@example.com',
           phone: '+13425784032',
     }
@@ -386,8 +286,8 @@ paload: {
 #### Schema
 
 ```js
-{
-        event: 'StartTrial',
+payload:{
+        type: 'StartTrial',
        email: <STRING: USER EMAIL>   , // Optional
        phone:<STRING: USER PHONE NUMBER>, // Optional
         value: <NUMBER: VALUE OF THIS ITEM >,
@@ -436,8 +336,8 @@ paload: {
 #### Example
 
 ```js
-   {
-        event: 'StartTrial',
+  payload: {
+        type: 'StartTrial',
         email: 'john@example.com',
         phone: '+13425784032',
         value: 40.0,
@@ -482,11 +382,11 @@ paload: {
 #### Schema
 
 ```js
- {
-        event: 'AddPaymentInfo',
+payload: {
+        type: 'AddPaymentInfo',
        email: <STRING: USER EMAIL>   , // Optional
        phone:<STRING: USER PHONE NUMBER>, // Optional
-        payment_event: <STRING: event OF PAYMENT>, // Optional
+        payment_type: <STRING: TYPE OF PAYMENT>, // Optional
         value: <NUMBER: VALUE OF THIS ITEM>, // Optional
         currency: <NUMBER:CURRENCY OF VALUE>, //Optional
         products: <ARRAY of Product Object>, //Optional
@@ -532,11 +432,11 @@ paload: {
 #### Example
 
 ```js
-{
-        event: 'AddPaymentInfo',
+payload:{
+        type: 'AddPaymentInfo',
         email: 'john@example.com',
         phone: "+13425784032",
-        payment_event: "Credit Card"
+        payment_type: "Credit Card"
         value: 40.00,
         currency: "USD",
         products: [
@@ -577,11 +477,11 @@ paload: {
 #### Schema
 
 ```js
- {
-        event: 'AddShippingInfo',
+payload: {
+        type: 'AddShippingInfo',
         email: '<STRING : USER EMAIL>', // Optional
         phone: '<STRING: USER PHONE NUMBER>', // Optional
-        shipping_tier: 'STRING: <event OF SHIPPING>', // Optional
+        shipping_tier: 'STRING: <TYPE OF SHIPPING>', // Optional
         value: <NUMBER: VALUE OF THIS ITEM>, // Optional
         currency: <STRING: CURRENCY OF VALUE>, //Optional
         products: <ARRAY of Product Object>, //Optional
@@ -627,8 +527,8 @@ paload: {
 #### Example
 
 ```js
- {
-        event: 'AddShippingInfo',
+payload: {
+        type: 'AddShippingInfo',
         email: 'john@example.com',
         phone: '+13425784032',
         shipping_tier: 'GROUND',
@@ -674,8 +574,8 @@ paload: {
 #### Schema
 
 ```js
-{
-        event: 'ViewCart',
+payload:{
+        type: 'ViewCart',
        email: <STRING: USER EMAIL>   , // Optional
        phone:<STRING: USER PHONE NUMBER>, // Optional
         value: <NUMBER: VALUE OF THIS ITEM >,
@@ -721,8 +621,8 @@ paload: {
 ```
 
 ```js
- {
-        event: 'ViewCart',
+payload: {
+        type: 'ViewCart',
         email: 'john@example.com',
         phone: '+13425784032',
         value: 40.0,
@@ -767,8 +667,8 @@ paload: {
 #### Schema
 
 ```js
- {
-        event: 'AddToCart',
+payload: {
+        type: 'AddToCart',
        email: <STRING: USER EMAIL>   , // Optional
        phone:<STRING: USER PHONE NUMBER>, // Optional
         value: <NUMBER: VALUE OF THIS ITEM >,
@@ -816,8 +716,8 @@ paload: {
 #### Examples
 
 ```js
- {
-        event: 'AddToCart',
+payload: {
+        type: 'AddToCart',
         email: 'john@example.com',
         phone: '+13425784032',
         value: 40.0,
@@ -862,8 +762,8 @@ paload: {
 #### Schema
 
 ```js
-{
-        event: 'AddToWishlist',
+payload:{
+        type: 'AddToWishlist',
        email: <STRING: USER EMAIL>   , // Optional
        phone:<STRING: USER PHONE NUMBER>, // Optional
         value: <NUMBER: VALUE OF THIS ITEM >,
@@ -875,8 +775,8 @@ paload: {
 #### Example
 
 ```js
- {
-        event: 'AddToWishlist',
+payload: {
+        type: 'AddToWishlist',
         email: 'john@example.com',
         phone: '+13425784032',
         value: 40.0,
@@ -921,8 +821,8 @@ paload: {
 #### Schema
 
 ```js
- {
-        event: 'RemoveFromCart',
+payload: {
+        type: 'RemoveFromCart',
        email: <STRING: USER EMAIL>   , // Optional
        phone:<STRING: USER PHONE NUMBER>, // Optional
         value: <NUMBER: VALUE OF THIS ITEM >,
@@ -970,8 +870,8 @@ paload: {
 #### Example
 
 ```js
-{
-        event: 'RemoveFromCart',
+payload:{
+        type: 'RemoveFromCart',
         email: 'john@example.com',
         phone: '+13425784032',
         value: 40.0,
@@ -1017,7 +917,7 @@ paload: {
 
 ```js
 paylaod: {
-        event: 'BeginCheckout',
+        type: 'BeginCheckout',
         email: <STRING: USER EMAIL>, // Optional
         phone: <STRING: USER PHONE NUMBER>, // Optional
         value: <NUMBER: TOTAL MONETARY VALUE OF THIS TRANSACTION >,
@@ -1067,8 +967,8 @@ paylaod: {
 #### Example
 
 ```js
- {
-        event: 'BeginCheckout',
+payload: {
+        type: 'BeginCheckout',
         email: 'john@example.com',
         phone: '+13425784032',
         value: 40.0,
@@ -1113,8 +1013,8 @@ paylaod: {
 #### Schema
 
 ```js
- {
-        event: 'Purchase',
+payload: {
+        type: 'Purchase',
         email: <STRING: USER EMAIL> // Optional
         phone: <STRING: USER PHONE NUMBER> // Optional
         value: <NUMBER: TOTAL MONETARY VALUE OF THIS TRANSACTION >
@@ -1165,8 +1065,8 @@ paylaod: {
 #### Example
 
 ```js
- {
-        event: 'Purchase',
+payload: {
+        type: 'Purchase',
         email: 'john@example.com',
         phone: '+13425784032',
         value: 40.0,
@@ -1213,8 +1113,8 @@ paylaod: {
 #### Schema
 
 ```js
-{
-        event: 'Refund',
+payload:{
+        type: 'Refund',
        email: <STRING: USER EMAIL>   , // Optional
        phone:<STRING: USER PHONE NUMBER>, // Optional
         value: <NUMBER: VALUE OF THIS ITEM >,
@@ -1263,8 +1163,8 @@ paylaod: {
 #### Example
 
 ```js
- {
-        event: 'Refund',
+payload: {
+        type: 'Refund',
         email: 'john@example.com',
         phone: '+13425784032',
         value: 40.0,
@@ -1310,8 +1210,8 @@ paylaod: {
 #### Schema
 
 ```js
- {
-        event: 'Search',
+payload: {
+        type: 'Search',
        email: <STRING: USER EMAIL>   , // Optional
        phone:<STRING: USER PHONE NUMBER>, // Optional
         item_id: <STRING: ITEM ID OF THE SHARED ITEM> // Optional
@@ -1322,8 +1222,8 @@ paylaod: {
 #### Example
 
 ```js
- {
-        event: 'Search',
+payload: {
+        type: 'Search',
         email: 'john@example.com',
         phone: '+13425784032',
         search_term: 'Flowers',
@@ -1343,8 +1243,8 @@ paylaod: {
 ### Schema
 
 ```js
- {
-        event: 'Share',
+payload: {
+        type: 'Share',
        email: <STRING: USER EMAIL>   , // Optional
        phone:<STRING: USER PHONE NUMBER>, // Optional
         item_id: <STRING: ITEM ID OF THE SHARED ITEM> // Optional
@@ -1355,8 +1255,8 @@ paylaod: {
 #### Example
 
 ```js
- {
-        event: 'Share',
+payload: {
+        type: 'Share',
         email: 'john@example.com',
         phone: '+13425784032',
         share_method: 'Facebook',
@@ -1377,7 +1277,7 @@ paylaod: {
 
 ```js
 paylad:{
-        event: 'Subscribe',
+        type: 'Subscribe',
         email: <STRING: USER EMAIL>, // Optional
         phone: <STRING: USER PHONE NUMBER>, // Optional
         value: <NUMBER: TOTAL MONETARY VALUE OF THIS TRANSACTION >,
@@ -1426,8 +1326,8 @@ paylad:{
 #### Example
 
 ```js
- {
-        event: 'Subscribe',
+payload: {
+        type: 'Subscribe',
         email: 'john@example.com',
         phone: '+13425784032',
         value: 10.0,
@@ -1459,7 +1359,7 @@ paylad:{
 
 ```js
 paylaod: {
-        event: 'Lead',
+        type: 'Lead',
         email: <STRING: USER EMAIL>, // Optional
         phone: <STRING: USER PHONE NUMBER>, // Optional
         value: <NUMBER: TOTAL MONETARY VALUE OF THIS LEAD >, // Optional
@@ -1470,8 +1370,8 @@ paylaod: {
 #### Example
 
 ```js
-  {
-        event: 'Lead',
+payload:  {
+        type: 'Lead',
         email: 'john@example.com',
         phone: '+13425784032',
         value: 40.0,
@@ -1492,8 +1392,8 @@ paylaod: {
 #### Schema
 
 ```js
- {
-        event: 'SubmitApplication',
+payload: {
+        type: 'SubmitApplication',
         email: <STRING: USER EMAIL>, // Optional
         phone: <STRING: USER PHONE NUMBER>, // Optional
         application_id: <STRING: UNIQUE ID OF THE APPLICATION>, // Optional
@@ -1503,8 +1403,8 @@ paylaod: {
 #### Example
 
 ```js
-  {
-        event: 'SubmitApplication',
+payload:  {
+        type: 'SubmitApplication',
         email: 'john@example.com',
         phone: '+13425784032',
     }
@@ -1523,8 +1423,8 @@ paylaod: {
 #### Schema
 
 ```js
- {
-        event: 'Contact',
+payload: {
+        type: 'Contact',
         email: <STRING: USER EMAIL>, // Optional
         phone: <STRING: USER PHONE NUMBER>, // Optional
     }
@@ -1533,8 +1433,8 @@ paylaod: {
 #### Example
 
 ```js
-{
-        event: 'Contact',
+payload:{
+        type: 'Contact',
         email: 'john@example.com',
         phone: '+13425784032',
     }
@@ -1553,8 +1453,8 @@ paylaod: {
 #### Schema
 
 ```js
-{
-        event: 'Donate',
+payload:{
+        type: 'Donate',
         email: <STRING: USER EMAIL>, // Optional
         phone: <STRING: USER PHONE NUMBER>, // Optional
     }
@@ -1563,8 +1463,8 @@ paylaod: {
 #### Example
 
 ```js
- {
-        event: 'Donate',
+payload: {
+        type: 'Donate',
         email: 'john@example.com',
         phone: '+13425784032',
     }
@@ -1581,8 +1481,8 @@ paylaod: {
 \*\*
 
 ```js
- {
-        event: 'Schedule',
+payload: {
+        type: 'Schedule',
         email: <STRING: USER EMAIL>, // Optional
         phone: <STRING: USER PHONE NUMBER>, // Optional
     }
@@ -1591,8 +1491,8 @@ paylaod: {
 #### Example
 
 ```js
-  {
-        event: 'Schedule',
+payload:  {
+        type: 'Schedule',
         email: 'john@example.com',
         phone: '+13425784032',
     }
@@ -1606,8 +1506,8 @@ paylaod: {
 
 ```js
 
-  {
-    event: "share_image",
+  payload:{
+    type: "share_image",
     "image_name": name,
     "full_text": text,
   }
