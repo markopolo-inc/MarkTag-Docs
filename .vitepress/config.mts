@@ -33,24 +33,24 @@ export default defineConfig({
         ],
       },
       {
-        text: "Log Events",
+        text: "SDK And Rest API",
         items: [
-          { text: "Identify user", link: "/log-events/identify-user" },
-          { text: "Automatic logging", link: "/log-events/automatic-logging" },
-          { text: "Manual logging", link: "/log-events/manual-logging" },
-          {text:"Web SDK", link: "/log-events/web-sdk" },
+          // { text: "Identify user", link: "/log-events/identify-user" },
+          // { text: "Automatic logging", link: "/log-events/automatic-logging" },
+          // { text: "Manual logging", link: "/log-events/manual-logging" },
+          {text:"Web SDK", link: "/log-events/web-sdk.md" },
           {text:"REST API", link: "/log-events/api.md" },
         ],
       },
-      {
-        text: "Compliance",
-        items: [
-          {
-            text: "Data collection and usage",
-            link: "/compliance/data-collection-and-usage.md",
-          },
-        ],
-      },
+      // {
+      //   text: "Compliance",
+      //   items: [
+      //     {
+      //       text: "Data collection and usage",
+      //       link: "/compliance/data-collection-and-usage.md",
+      //     },
+      //   ],
+      // },
     ],
     footer: {
       copyright: "Copyright © 2019-present Markopolo AI",

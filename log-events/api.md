@@ -28,13 +28,15 @@ POST /mark
 
 ```
 
-| Cookies                            | Description                                  | Required |
-| -------------------------------------- | -------------------------------------------- | -------- |
-| `_fbp`                              | https://developers.facebook.com/docs/marketing-api/conversions-api/parameters/fbp-and-fbc/                             | No      |
-| `_fbc`                             | https://developers.facebook.com/docs/marketing-api/conversions-api/parameters/fbp-and-fbc/                 | No      |
-| `_ttp_`                              | https://ads.tiktok.com/help/article/using-cookies-with-tiktok-pixel?lang=en       | No      |
+## Cookies Used on This Website
 
+This table provides information about the cookies used on this website.
 
+| Cookie Name         | Description                                                                                                    | Required |
+|---------------------|----------------------------------------------------------------------------------------------------------------- | -------- |
+| `_fbp`              | When the Meta Pixel is installed on a website, and the Pixel uses first-party cookies, the Pixel automatically saves a unique identifier to an _fbp cookie for the website domain if one does not already exist. See [here](https://developers.facebook.com/docs/marketing-api/conversions-api/parameters/fbp-and-fbc/) for more information. | No       |
+| `_fbc`              | When a user clicks on an ad on Facebook, the link sometimes includes a fbclid query parameter. When the user lands on the target website, if the website has a Meta Pixel that uses first-party cookies, the Pixel automatically saves the fbclid query parameter to an _fbc cookie for that website domain. See [here](https://developers.facebook.com/docs/marketing-api/conversions-api/parameters/fbp-and-fbc/) for more information. | No       |
+| `_ttp_`             | To measure and improve the performance of your advertising campaigns and to personalize the user's experience (including ads) on TikTok. See [here](https://ads.tiktok.com/help/article/using-cookies-with-tiktok-pixel?lang=en) for more information. | No       |
 
 
 ### Request Body
