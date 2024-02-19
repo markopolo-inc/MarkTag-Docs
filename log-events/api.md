@@ -23,10 +23,21 @@ POST /mark
 - Host: https://tag.your-domain.com
 - User-Agent: userAgent
 - Content-event: application/json
-- Cookie: _fbp=fbpValue; _fbc=fbcValue; _ttp: ttpValue,_muid:muid
+- Cookie: _fbp=fbpValue; _fbc=fbcValue; _ttp: ttpValue
 
 
 ```
+
+| Cookies                            | Description                                  | Required |
+| -------------------------------------- | -------------------------------------------- | -------- |
+| `_fbp`                              | https://developers.facebook.com/docs/marketing-api/conversions-api/parameters/fbp-and-fbc/                             | No      |
+| `_fbc`                             | https://developers.facebook.com/docs/marketing-api/conversions-api/parameters/fbp-and-fbc/                 | No      |
+| `_ttp_`                              | https://ads.tiktok.com/help/article/using-cookies-with-tiktok-pixel?lang=en       | No      |
+
+
+**Note:** The "Additional Fields" section will vary depending on the specific event type. Please refer to the documentation for your specific event types to determine the additional fields required or available mentioned below.
+
+
 
 ### Request Body
 
@@ -42,6 +53,8 @@ POST /mark
     //add other body depending on event type
 }
 ```
+
+
 ::: info
 Additional body data needs to be sent depending on the event type
 :::
@@ -123,6 +136,7 @@ curl --location 'https://tag.your-domain.com' \
 
 ```js
 {
+  event: "ViewContent",
   email: `<STRING: USER EMAIL>`; // Optional
   phone: `<STRING: USER PHONE NUMBER>`; // Optional
 }
@@ -132,7 +146,7 @@ curl --location 'https://tag.your-domain.com' \
 
 ```js
  {
-
+        event:"ViewContent",
         email: 'john@example.com',
         phone: '+13425784032',
     }
