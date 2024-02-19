@@ -35,8 +35,6 @@ POST /mark
 | `_ttp_`                              | https://ads.tiktok.com/help/article/using-cookies-with-tiktok-pixel?lang=en       | No      |
 
 
-**Note:** The "Additional Fields" section will vary depending on the specific event type. Please refer to the documentation for your specific event types to determine the additional fields required or available mentioned below.
-
 
 
 ### Request Body
