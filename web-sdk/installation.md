@@ -13,5 +13,5 @@
 
   <script async type="text/javascript" src="{{TAG_DOMAIN}}/script" />
 ```
-Make sure to replace {{TAG_DOMAIN}} with your marktag domain from app.markopolo.ai
+Make sure to replace {{TAG_DOMAIN}} with your marktag domain from app.markopolo.ai  
 Done! You are now able to log events with MarkTag
