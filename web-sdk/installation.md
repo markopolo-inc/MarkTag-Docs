@@ -7,11 +7,11 @@
 
 	  window.mtrem = window.mtrem || [];
 	  function mtag() { mtrem.push(arguments) };
-	  mtag("init", "tag.your-domain.com", {"consent":true});
+	  mtag("init", "{{TAG_DOMAIN}}", {"consent":true});
 
   </script>
 
-  <script async type="text/javascript" src="tag.your-domain.com/script" />
+  <script async type="text/javascript" src="{{TAG_DOMAIN}}/script" />
 ```
-
-Done! You are now able to log events with MarTag
+Make sure to replace {{TAG_DOMAIN}} with your marktag domain from app.markopolo.ai
+Done! You are now able to log events with MarkTag
