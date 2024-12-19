@@ -59,6 +59,14 @@ export default defineConfig({
           { text: "Usage", link: "/rest-api/usage" },
         ],
       },
+      {
+        text: "Unity SDK",
+        items: [
+          { text: "Installation", link: "/unity-sdk/installation" },
+          { text: "Identify User", link: "/unity-sdk/identify-user" },
+          { text: "Usage", link: "/unity-sdk/usage" },
+        ],
+      },
       // {
       //   text: "SDKs",
       //   items: [
