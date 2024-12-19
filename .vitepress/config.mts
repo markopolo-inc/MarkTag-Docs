@@ -10,9 +10,8 @@ export default defineConfig({
   sitemap: {
     hostname: "https://markopolo-inc.github.io/marktag-docs",
   },
+  head: [['link', { rel: 'icon', href: '/logo.svg' }]],
   transformHead: (ctx) => {
-    if (ctx.page?.includes("unity-sdk")) {
-      // https://i.ytimg.com/vi/bj9MFc6p3uM/maxresdefault.jpg
       ctx.pageData.frontmatter.head ??= []
       ctx.pageData.frontmatter.head.push([
         'meta',
@@ -20,8 +19,7 @@ export default defineConfig({
           name: 'og:image',
           content: 'https://i.ytimg.com/vi/bj9MFc6p3uM/maxresdefault.jpg'
         }
-      ])
-    }
+    ])
   },
   themeConfig: {
     // https://vitepress.dev/reference/default-theme-config
