@@ -17,6 +17,10 @@ Get started with the MarkTag Unity SDK
 Marktag.instance.Initialize("tag.your-domain.com");
 ```
 
+::: warning
+This method must be called before any other MarkTag method. Make sure to call it somewhere that will be executed first and will live for the duration of the app.
+:::
+
 ::: tip
 You can get the tag from your Markopolo dashboard at [https://app.markopolo.ai/marktag/pixel](https://app.markopolo.ai/marktag/pixel)
 :::
