@@ -28,6 +28,8 @@ Marktag.instance.LogEvent("TestCustomEvent", new Dictionary<string, object>
 });
 ```
 
+You can use this method to log any event that we don't have a specific method for. For example, `PlayerDeath`, `PlayerWin`, `PlayerLose`, `EnemyKilled`, `ItemPurchased`, etc.
+
 ## Log View Item
 
 ```csharp
